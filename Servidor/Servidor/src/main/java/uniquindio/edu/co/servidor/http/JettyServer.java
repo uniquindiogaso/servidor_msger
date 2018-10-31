@@ -31,7 +31,7 @@ class JettyServer {
         ServletHandler servletHandler = new ServletHandler();
         server.setHandler(servletHandler);
 
-        servletHandler.addServletWithMapping(BlockingServlet.class, "/status");
+        servletHandler.addServletWithMapping(LoginServlet.class, "/status");
 
         server.start();
 
