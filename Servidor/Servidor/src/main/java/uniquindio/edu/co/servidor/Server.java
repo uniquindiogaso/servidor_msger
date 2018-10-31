@@ -8,13 +8,13 @@ import java.util.Iterator;
 
 public class Server {
 
-    public final static int PORT = 3400;
+    public final static int PORT = 6969;
 
     private ServerSocket socketBienvenida;
     private ArrayList<ManejadorComunicacion> manejadorClientes;
 
     public Server() {
-        System.out.println("Servidor iniciado en el puerto 3400");
+        System.out.println("Servidor iniciado en el puerto 6969");
         manejadorClientes = new ArrayList<ManejadorComunicacion>();
 
         try {
