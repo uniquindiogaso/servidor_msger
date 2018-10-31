@@ -21,4 +21,14 @@ public class BlockingServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("{ \"status\": \"ok\"}");
     }
+    
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("HttpServletRequest :  " + request);
+        System.out.println("request.getMethod() : " + request.getMethod());
+        System.out.println("request.getQueryString() " + request.getQueryString());
+        response.setContentType("application/json");
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().println("{ \"status\": \"ok\"}");
+    }
 }
