@@ -1,4 +1,4 @@
-package servidor;
+package uniquindio.edu.co.servidor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,10 +12,6 @@ public class Server {
 
     private ServerSocket socketBienvenida;
     private ArrayList<ManejadorComunicacion> manejadorClientes;
-
-    public static void main(String[] args) {
-        new Server();
-    }
 
     public Server() {
         System.out.println("Servidor iniciado en el puerto 3400");

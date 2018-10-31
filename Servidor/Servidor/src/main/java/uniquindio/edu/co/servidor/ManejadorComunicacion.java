@@ -1,4 +1,4 @@
-package servidor;
+package uniquindio.edu.co.servidor;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
