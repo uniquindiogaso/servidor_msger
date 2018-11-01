@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package uniquindio.edu.co.servidor;
-import java.util.List;
-import uniquindio.edu.co.bd.models.Usuario;
-import uniquindio.edu.co.bd.pojo.UsuarioPOJO;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import uniquindio.edu.co.servidor.http.*;
+
 /**
  *
  * @author gusta
@@ -18,16 +19,16 @@ public class StartApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //new Server();
-        
-        UsuarioPOJO pojo = new UsuarioPOJO();
-        
-        List<Usuario> usuarios = pojo.login("gaso", "123");
-        
-        for (Usuario u : usuarios){
-            System.out.println("Usuario " + u);
+        try {
+            //Servidor Chat
+            new Server();
+            //Servidor http
+            JettyServer js = new JettyServer();
+            js.start();
+        } catch (Exception ex) {
+            Logger.getLogger(StartApp.class.getName()).log(Level.SEVERE, "OMG!... error en inicio servidor chat o jetty", ex);
         }
 
     }
-    
+
 }

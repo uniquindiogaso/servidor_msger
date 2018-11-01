@@ -35,5 +35,15 @@ public class UsuarioController {
         //error general
         return "200";
     }
+    
+    public String insertarUsuario(Usuario usuario){
+        int res = pojo.insertarUsuario(usuario);
+        return String.valueOf(res);
+    }
+    
+    public String actualizarUsuario(Usuario usuario){
+        int res = pojo.actualizarUsuario(usuario);
+        return String.valueOf(res);
+    }    
 
 }

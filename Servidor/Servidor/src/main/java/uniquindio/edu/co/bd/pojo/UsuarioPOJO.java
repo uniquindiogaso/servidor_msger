@@ -16,7 +16,7 @@ import uniquindio.edu.co.bd.models.Usuario;
  */
 public class UsuarioPOJO {
 
-    public List<Usuario> login(String usr , String pass) {
+    public List<Usuario> login(String usr, String pass) {
         try (Connection con = DbHelper.getSql2o().open()) {
             final String query
                     = "SELECT id, usr, pass , nombres , apellidos , estado , email , bloqueado "
@@ -27,6 +27,44 @@ public class UsuarioPOJO {
                     .addParameter("pass", pass)
                     .executeAndFetch(Usuario.class);
         }
+    }
+
+    public int insertarUsuario(Usuario usuario) {
+        int res = -1;
+        final String insertQuery
+                = "INSERT INTO usuario (usr, pass,nombres,apellidos,estado,email) "
+                + "VALUES (:usr, :pass,:nombres,:apellidos,:estado,:email)";
+
+        try (Connection con = DbHelper.getSql2o().beginTransaction()) {
+            res = con.createQuery(insertQuery, true)
+                    .addParameter("usr", usuario.getUsr())
+                    .addParameter("pass", usuario.getPass())
+                    .addParameter("nombres", usuario.getNombres())
+                    .addParameter("apellidos", usuario.getApellidos())
+                    .addParameter("estado", "Conectado")
+                    .addParameter("email", usuario.getEmail())
+                    .executeUpdate()
+                    .getResult();
+            con.commit();
+        }
+
+        return res;
+    }
+
+    public int actualizarUsuario(Usuario usuario) {
+        int res = -1;
+
+        final String updateQuery
+                = "UPDATE usuario SET :usr, :pass,:nombres,:apellidos,:estado,:email) WHERE id = :id";
+
+        try (Connection con = DbHelper.getSql2o().open()) {
+            res = con.createQuery(updateQuery, true)
+                    .bind(usuario)
+                    .executeUpdate()
+                    .getResult();
+        }
+
+        return res;
     }
 
 }

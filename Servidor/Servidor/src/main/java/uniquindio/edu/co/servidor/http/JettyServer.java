@@ -11,11 +11,11 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
-class JettyServer {
+public class JettyServer {
 
     private Server server;
 
-    void start() throws Exception {
+    public void start() throws Exception {
 
         int maxThreads = 100;
         int minThreads = 10;
@@ -32,6 +32,8 @@ class JettyServer {
         server.setHandler(servletHandler);
 
         servletHandler.addServletWithMapping(LoginServlet.class, "/status");
+        servletHandler.addServletWithMapping(UsuarioServlet.class, "/usuariocrear");
+        servletHandler.addServletWithMapping(UsuarioServlet.class, "/usuariomodificar");
 
         server.start();
 
