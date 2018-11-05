@@ -17,9 +17,9 @@
             <version>9.4.3.v20170317</version>
         </dependency>        
         <dependency>
-          <groupId>org.sql2o</groupId>
-          <artifactId>sql2o</artifactId>
-          <version>1.6.0</version>
+            <groupId>org.sql2o</groupId>
+            <artifactId>sql2o</artifactId>
+            <version>1.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -32,4 +32,23 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>uniquindio.edu.co.servidor.StartApp</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <finalName>msger_server</finalName>
+                     <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+            </plugin>         
+        </plugins>
+    </build>
 </project>
