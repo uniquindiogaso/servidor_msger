@@ -20,11 +20,11 @@ public class StartApp {
      */
     public static void main(String[] args) {
         try {
-            //Servidor Chat
-            new Server();
             //Servidor http
             JettyServer js = new JettyServer();
             js.start();
+            //Servidor Chat
+            new Server();            
         } catch (Exception ex) {
             Logger.getLogger(StartApp.class.getName()).log(Level.SEVERE, "OMG!... error en inicio servidor chat o jetty", ex);
         }

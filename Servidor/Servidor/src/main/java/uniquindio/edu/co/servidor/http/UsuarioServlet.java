@@ -16,7 +16,7 @@ import uniquindio.edu.co.controllers.UsuarioController;
 public class UsuarioServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("end-point = " + request.getContextPath());
+        System.out.println("end-point = " + request.getRequestURI());
         System.out.println("UsuarioServlet Parametro recibido = " + request.getParameter("usr"));
         System.out.println("UsuarioServlet Parametro recibido = " + request.getParameter("pass"));
 
@@ -33,11 +33,11 @@ public class UsuarioServlet extends HttpServlet {
         usuario.setBloqueado(Boolean.getBoolean(request.getParameter("bloqueado")));
         usuario.setEmail(request.getParameter("email"));
 
-        if ("usuariocrear".equals(request.getContextPath())) {
+        if ("/usuariocrear".equals(request.getRequestURI())) {
             res = controller.insertarUsuario(usuario);
         }
 
-        if ("usuariomodificar".equals(request.getContextPath())) {
+        if ("/usuariomodificar".equals(request.getRequestURI())) {
             res = controller.actualizarUsuario(usuario);
         }
 

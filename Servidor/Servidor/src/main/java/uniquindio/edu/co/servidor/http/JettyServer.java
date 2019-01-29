@@ -30,6 +30,8 @@ public class JettyServer {
 
         ServletHandler servletHandler = new ServletHandler();
         server.setHandler(servletHandler);
+        
+        System.out.println("[HTTP]Servidor escuchando por 8000");
 
         servletHandler.addServletWithMapping(LoginServlet.class, "/status");
         servletHandler.addServletWithMapping(UsuarioServlet.class, "/usuariocrear");

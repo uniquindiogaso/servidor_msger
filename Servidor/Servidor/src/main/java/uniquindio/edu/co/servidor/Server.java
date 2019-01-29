@@ -14,7 +14,7 @@ public class Server {
     private ArrayList<ManejadorComunicacion> manejadorClientes;
 
     public Server() {
-        System.out.println("Servidor iniciado en el puerto 6969");
+        System.out.println("[Sockets]Servidor escuchando por 6969");
         manejadorClientes = new ArrayList<ManejadorComunicacion>();
 
         try {
