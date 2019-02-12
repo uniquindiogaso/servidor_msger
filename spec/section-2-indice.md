@@ -45,3 +45,7 @@ Adicional a esto, se manejará una serie de código propios para el manejo de lo
 {% endtab %}
 {% endtabs %}
 
+## Flujo de comunicación
+
+ El flujo de comunicación inicia con una autenticación de usuario empleando una aplicación cliente. En ella, el cliente hace una petición HTTP al servidor y este responde la solicitud indicando si es posible el acceso a la aplicación. una vez autenticado se habilita un Socket para comunicarse con los  clientes que están conectado al servidor, quienes tiene la posibilidad de compartir mensajes, memes, archivos e imágenes.
+
