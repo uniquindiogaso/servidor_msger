@@ -20,7 +20,7 @@ German F Valencia gfvalenciah@uqvirtual.edu.co
 
 # [INTRODUCCION](spec/Section%202%20--%20indice.md)
 
-# [ESPECIFICIACION DEL PROTOCOLO](spec/Section%203%20--%20Type%20indice.md)
+# [ESPECIFICIACION DEL PROTOCOLO](spec/Section%203%20--%20indice.md)
 
 # [ESPECIFICIACION DE LOS CAMPOS DE LOS MENSAJES](spec/Section%204%20--%20indice.md)
 
