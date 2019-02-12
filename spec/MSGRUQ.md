@@ -12,9 +12,9 @@ Febrero de 2019
 
 **Preparado por**
 
-Gustavo Salgado gasalgadoo@uqvirtual.edu.co
-Juan Sebastian Ocampo jsocampoo@uqvirtual.edu.co
-German F Valencia gfvalenciah@uqvirtual.edu.co
+- Gustavo Salgado gasalgadoo@uqvirtual.edu.co
+- Juan Sebastian Ocampo jsocampoo@uqvirtual.edu.co
+- German F Valencia gfvalenciah@uqvirtual.edu.co
 
 # [PREFACIO](Section%201%20--%20indice.md)
 
