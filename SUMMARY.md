@@ -1,6 +1,7 @@
 # Table of contents
 
 * [MSGR UQ - RFC](README.md)
+* [Prototipo de Interfaz Grafica](prototipo-de-interfaz-grafica.md)
 * [Especificaciones Protocolo](spec/README.md)
   * [PREFACIO](spec/section-1-indice.md)
   * [INTRODUCCIÓN](spec/section-2-indice.md)
