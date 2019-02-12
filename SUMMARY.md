@@ -1,6 +1,6 @@
 # Table of contents
 
-* [MSGR UQ PROTOCOL](README.md)
+* [MSGR UQ - RFC](README.md)
 * [Especificaciones Protocolo](spec/README.md)
   * [PREFACIO](spec/section-1-indice.md)
   * [INTRODUCCION](spec/section-2-indice.md)

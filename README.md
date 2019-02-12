@@ -1,4 +1,4 @@
-# MSGR UQ PROTOCOL
+# MSGR UQ - RFC
 
 _Current Working Draft_
 
