@@ -21,17 +21,27 @@ Adicional a esto, se manejará una serie de código propios para el manejo de lo
 * 8xx: Advertencias 
 * 9xx: Errores del Servidor
 
-Códigos de respuesta para Login de usuarios:  
-601 : Se han enviando campos vacios. 701 : Autenticacion Exitosa.  
-801 : No existe el usuario con los datos proporcionados de autenticacion  
-802 : Usuario se encuentra bloqueado, no puede iniciar sesion  
-901 : Error General, usuario y clave no fueron enviados. No se puede comprobar identidad.
+{% tabs %}
+{% tab title="Códigos Respuesta Generales" %}
+* 602: Solicitud de Amistad Aceptada. 
+* 603: Solicitud de Amistad Rechazada. 
+* 704: Solicitud de Información enviada correctamente. 
+* 804: No se encuentra usuario, no se enviara solicitud. 
+* 903: Error General, la información suministrada no fue suficiente para enviar solicitud.
+{% endtab %}
 
-Códigos de respuesta para actualización de usuarios: 702: Actualizacion de Informacion Correcta.  
-803: No se logro actualizar la información del usuario. 902: Error General, la informacion enviada no fue suficiente para actualizar usuario.
+{% tab title="Códigos Respuesta Login Usuario" %}
+* 601 : Se han enviando campos vacíos. 
+* 701 : Autenticación Exitosa. 
+* 801 : No existe el usuario con los datos proporcionados de autenticacion 
+* 802 : Usuario se encuentra bloqueado, no puede iniciar sesión 
+* 901 : Error General, usuario y clave no fueron enviados. No se puede comprobar identidad.
+{% endtab %}
 
-Códigos de respuesta para el funcionamiento de la aplicación:  
-602: Solicitud de Amistad Aceptada. 603: Solicitud de Amistad Rechazada.  
-704: Solicitud de Información enviada correctamente.  
-804: No se encuentra usuario, no se enviara solicitud. 903: Error General, la información suministrada no fue suficiente para enviar solicitud.
+{% tab title="Códigos Respuesta Actualización Usuarios" %}
+* 702: Actualización de Información Correcta. 
+* 803: No se logro actualizar la información del usuario. 
+* 902: Error General, la información enviada no fue suficiente para actualizar usuario.
+{% endtab %}
+{% endtabs %}
 

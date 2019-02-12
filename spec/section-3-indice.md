@@ -1,4 +1,4 @@
-# ESPECIFICACION DEL PROTOCOLO
+# ESPECIFICACIÓN DEL PROTOCOLO
 
 Este es un protocolo define la estrucutura de los mensajes que seran enviando por medio de la aplicacion, este protocolo gestionara el tipo de mensajes intercambiados, la sintaxis con la cual seran contruidos cada uno de los mensajes que seran enviados, asi como tambien semantica para su correcto procesamiento y definira las reglas para el proceso de envio y recepcion de los mensajes.
 
