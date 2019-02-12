@@ -1,4 +1,4 @@
-# INTRODUCCION
+# INTRODUCCIÓN
 
 Este protocolo se define con la intención de hacer un datagrama que permita establecer la comunicación por intercambio de paquetes entre ordenadores interconectados mediante la aplicación MSGR UQ.
 
@@ -8,23 +8,30 @@ Este protocolo utiliza a su vez protocolos de redes locales, para llevar el data
 
 La aplicación contara con códigos de error por defecto, como son los códigos de error del protocolo http, a la hora de conectarse al servidor, es decir:
 
-1xx: Informativas 2xx: Peticiones 3xx: Redirecciones 4xx: Errores del cliente 5xx: Errores del servidor.
+* 1xx: Informativas 
+* 2xx: Peticiones 
+* 3xx: Redirecciones 
+* 4xx: Errores del cliente 
+* 5xx: Errores del servidor.
 
-Adicional a esto, se manejará una serie de código propios para el manejo de los estados del funciomaniento de la aplicacion en cuanto al envio de mensajes y administracion de usuarios, estos son:
+Adicional a esto, se manejará una serie de código propios para el manejo de los estados del funcionamiento de la aplicación en cuanto al envio de mensajes y administración de usuarios, estos son:
 
-6xx: Informacion 7xx: Exito 8xx: Advertencias 9xx: Errores del Servidor
+* 6xx: Información 
+* 7xx: Éxito 
+* 8xx: Advertencias 
+* 9xx: Errores del Servidor
 
-Codios de respuesta para Login de usuarios:  
+Códigos de respuesta para Login de usuarios:  
 601 : Se han enviando campos vacios. 701 : Autenticacion Exitosa.  
 801 : No existe el usuario con los datos proporcionados de autenticacion  
 802 : Usuario se encuentra bloqueado, no puede iniciar sesion  
 901 : Error General, usuario y clave no fueron enviados. No se puede comprobar identidad.
 
-Codigos de respuesta para actualizacion de usuarios: 702: Actualizacion de Informacion Correcta.  
-803: No se logro actualizar la informacion del usuario. 902: Error General, la informacion enviada no fue suficiente para actualizar usuario.
+Códigos de respuesta para actualización de usuarios: 702: Actualizacion de Informacion Correcta.  
+803: No se logro actualizar la información del usuario. 902: Error General, la informacion enviada no fue suficiente para actualizar usuario.
 
-Codios de respuesta para el funcionamiento de la aplicacion:  
+Códigos de respuesta para el funcionamiento de la aplicación:  
 602: Solicitud de Amistad Aceptada. 603: Solicitud de Amistad Rechazada.  
-704: Solicitud de Informacion enviada correctamente.  
-804: No se encuentra usuario, no se enviara solicitud. 903: Error General, la informacion suministrada no fue suficiente para enviar solicitud.
+704: Solicitud de Información enviada correctamente.  
+804: No se encuentra usuario, no se enviara solicitud. 903: Error General, la información suministrada no fue suficiente para enviar solicitud.
 
