@@ -1,17 +1,22 @@
 # ESPECIFICACIÓN DEL PROTOCOLO
 
-Este es un protocolo define la estrucutura de los mensajes que seran enviando por medio de la aplicacion, este protocolo gestionara el tipo de mensajes intercambiados, la sintaxis con la cual seran contruidos cada uno de los mensajes que seran enviados, asi como tambien semantica para su correcto procesamiento y definira las reglas para el proceso de envio y recepcion de los mensajes.
+Este es un protocolo define la estructura de los mensajes que serán enviando por medio de la aplicación, este protocolo gestionara el tipo de mensajes intercambiados, la sintaxis con la cual serán construidos cada uno de los mensajes que serán enviados, así como también semántica para su correcto procesamiento y definirá las reglas para el proceso de envió y recepción de los mensajes.
 
-El protocolo usa diversos tipos de peticiones las cuales son enviadas o recibidas segun como sean solicitadas, el servidor siempre esta atento a cualquier peticion del cliente y este responde en funcion de la peticion solicitada con su respectivo mensaje y codigo de respuesta.
+El protocolo usa diversos tipos de peticiones las cuales son enviadas o recibidas según como sean solicitadas, el servidor siempre esta atento a cualquier petición del cliente y este responde en función de la petición solicitada con su respectivo mensaje y código de respuesta.
 
-El mensaje de solicitud de autenticacion se presenta cuando un cliente necesita aquirir los servicios del servidor, el cliente debera presentar credenciales de autenticacion y demostrar que esta registrado en la base de datos del servidor, todo esto sera manejado mediante el protocolo HTTP, por lo que seran implementados todas las caracteristicas y estructuras para el uso de este protocolo en la aplicacion.
+El mensaje de solicitud de autenticación se presenta cuando un cliente necesita adquirir los servicios del servidor, el cliente deberá presentar credenciales de autenticación y demostrar que esta registrado en la base de datos del servidor, todo esto sera manejado mediante el protocolo HTTP, por lo que serán implementados todas las características y estructuras para el uso de este protocolo en la aplicación.
 
-Los mensajes que se intercambian mendiante el protocolo diseñado para la apliacion tienen un codigo que los identifican, este codigo empieza a ser un consecutico dentro de la transaccion, esto para poder retomarlos a la hora de generar una respuesta del estado de la transaccion realizada con el mensaje enviado.
+Los mensajes que se intercambian mediante el protocolo diseñado para la aplicación tienen un código que los identifican, este código empieza a ser un consecutivo dentro de la transacción, esto para poder retomarlos a la hora de generar una respuesta del estado de la transacción realizada con el mensaje enviado.
 
-## Definicion del formato del protocolo
+## Definición del formato del protocolo
 
-La informacion se envia en una cadena separada por doble barra vertical \|\|. Cuando es necesario enviar un listado de usuarios conectados se usa como separador  
-doble ampersand \(&&\)
+La información se envía en una cadena separada por doble barra vertical \|\|. Cuando es necesario enviar un listado de usuarios conectados se usa como separador el doble ampersand \(&&\).
+
+Es importante aclarar que los separadores se especifican en el paso antes de enviar a los remitentes para evitar inconvenientes cuando el usuario utilice dicho caracter en un mensaje,  esto permite escaparlos antes de enviarlos y diferenciarlos los unos de los otros.
+
+La codificación se hará mediante UTF-8 ya que serán utilizados para codificar mensajes, emojis, memes entre otros caracteres especiales.
+
+El final de línea no estará especificado en este protocolo, el caracter separador \(\|\|\) cumplirá ambos propósitos.
 
 ### Lista de usuarios conectados
 

@@ -1,12 +1,12 @@
 # INTRODUCCIÓN
 
-Este protocolo se define con la intención de hacer un datagrama que permita establecer la comunicación por intercambio de paquetes entre ordenadores interconectados mediante la aplicación MSGR UQ.
+Este protocolo de capa de aplicación, esta definido para realizar la  estandarización de la comunicación por intercambio de mensajes entre ordenadores interconectados mediante la aplicación MSGR UQ.
 
 Este protocolo aporta un procedimiento para que un usuario pueda enviar mensajes a otros a otros usuarios mediante la aplicación MSGR UQ, con un mínimo de mecanismo de protocolo.
 
-Este protocolo utiliza a su vez protocolos de redes locales, para llevar el datagrama a un próximo escenario en internet \(“Gateway”\) o host destino, por ejemplo, hará uso del protocolo TCP para la trasmisión de los datos en la capa de transporte, así como también manejará el protocolo HTTP para establecer la conexión con el servidor al momento de iniciar sesión.
+Este protocolo utiliza a su vez protocolos de redes locales, para llevar el datagrama a un próximo escenario en Internet \(“Gateway”\) o host destino, por ejemplo, hará uso del protocolo TCP para la trasmisión de los datos en la capa de transporte, así como también manejará el protocolo HTTP para establecer la conexión con el servidor al momento de iniciar sesión.
 
-La aplicación contara con códigos de error por defecto, como son los códigos de error del protocolo http, a la hora de conectarse al servidor, es decir:
+La aplicación contara con códigos de error por defecto, como son los códigos de error del protocolo HTTP, a la hora de conectarse al servidor, es decir:
 
 * 1xx: Informativas 
 * 2xx: Peticiones 
@@ -14,7 +14,7 @@ La aplicación contara con códigos de error por defecto, como son los códigos 
 * 4xx: Errores del cliente 
 * 5xx: Errores del servidor.
 
-Adicional a esto, se manejará una serie de código propios para el manejo de los estados del funcionamiento de la aplicación en cuanto al envio de mensajes y administración de usuarios, estos son:
+Adicional a esto, se manejará una serie de código propios para el manejo de los estados del funcionamiento de la aplicación en cuanto al envió de mensajes y administración de usuarios, estos son:
 
 * 6xx: Información 
 * 7xx: Éxito 
