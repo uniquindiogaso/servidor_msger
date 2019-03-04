@@ -34,6 +34,8 @@ public class LoginServlet extends HttpServlet {
 
         UsuarioController controller = new UsuarioController();
         String res = controller.comprobarLogin(usuario, clave);
+        
+        System.out.println("Respuesta loginController "  + res);
 
         response.setContentType("text/html;charset=UTF-8");
         response.setStatus(HttpServletResponse.SC_OK);

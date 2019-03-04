@@ -98,10 +98,11 @@ public class ManejadorClientes implements Runnable {
                     
                     
                     for (ManejadorClientes mc : ServerChat.clientesHandle) {
+                        System.out.println("usuarioId = " + mc.clienteId  + " | destino " + destino);   
+                        
                         //Si encuentra el cliente ... entonces conectar                        
-                        if (mc.name.equals(destino) && mc.estaAutenticado == true) {
-                            //mc.salidaACliente.writeBytes(mensaje);
-                            System.out.println("usuarioId " + mc.clienteId);    
+                        if (mc.clienteId.equals(destino) && mc.estaAutenticado == true) {
+                            //mc.salidaACliente.writeBytes(mensaje);                             
                             mc.salidaACliente.writeBytes(mensaje + "\n");
                             break;
                         }
