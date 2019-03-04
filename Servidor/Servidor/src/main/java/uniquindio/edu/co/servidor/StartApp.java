@@ -8,6 +8,7 @@ package uniquindio.edu.co.servidor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uniquindio.edu.co.servidor.http.*;
+import uniquindio.edu.co.servidor.sockets.ServerChat;
 
 /**
  *
@@ -24,7 +25,7 @@ public class StartApp {
             JettyServer js = new JettyServer();
             js.start();
             //Servidor Chat
-            new Server();            
+            new ServerChat(); 
         } catch (Exception ex) {
             Logger.getLogger(StartApp.class.getName()).log(Level.SEVERE, "OMG!... error en inicio servidor chat o jetty", ex);
         }
