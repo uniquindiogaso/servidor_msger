@@ -26,3 +26,29 @@ CREATE TABLE usuario(
 
 ALTER TABLE public.usuario
   OWNER TO r00t;
+  
+CREATE TABLE solicitudes(
+id SERIAL PRIMARY KEY,
+usuariosolicita_id INTEGER NOT NULL,
+usuariosolicitado_id INTEGER NOT NULL,
+estado INTEGER NOT NULL,
+foreign key (usuariosolicita_id) references usuario(id),
+foreign key (usuariosolicitado_id) references usuario(id)
+);
+
+ALTER TABLE public.solicitudes
+  OWNER TO r00t;
+  
+  
+CREATE TABLE amigos(
+id SERIAL PRIMARY KEY,
+usuario_id INTEGER NOT NULL,
+amigo_id INTEGER NOT NULL,
+foreign key (usuario_id) references usuario(id),
+foreign key (amigo_id) references usuario(id)
+);
+
+ALTER TABLE public.amigos
+  OWNER TO r00t;
+
+

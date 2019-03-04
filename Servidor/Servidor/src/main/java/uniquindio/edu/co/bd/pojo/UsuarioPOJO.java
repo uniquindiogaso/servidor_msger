@@ -28,6 +28,20 @@ public class UsuarioPOJO {
                     .executeAndFetch(Usuario.class);
         }
     }
+    
+    
+    public List<Usuario> todos(String usuarioId) {
+        try (Connection con = DbHelper.getSql2o().open()) {
+            final String query
+                    = "SELECT u.id, u.usr, u.nombres , u.apellidos , u.estado , u.email FROM usuario u  LEFT JOIN amigos a \n" +
+                        "ON u.id = a.amigo_id AND a.id <> = :usuarioId";
+
+            return con.createQuery(query)
+                    .addParameter("id", usuarioId)                    
+                    .executeAndFetch(Usuario.class);
+        }
+    }
+    
 
     public int insertarUsuario(Usuario usuario) {
         int res = -1;
@@ -55,7 +69,7 @@ public class UsuarioPOJO {
         int res = -1;
 
         final String updateQuery
-                = "UPDATE usuario SET :usr, :pass,:nombres,:apellidos,:estado,:email) WHERE id = :id";
+                = "UPDATE usuario SET :usr, :pass,:nombres,:apellidos,:estado,:email WHERE id = :id";
 
         try (Connection con = DbHelper.getSql2o().open()) {
             res = con.createQuery(updateQuery, true)
@@ -65,6 +79,18 @@ public class UsuarioPOJO {
         }
 
         return res;
+    }
+
+    public Usuario obtenerUsuario(int id) {
+        try (Connection con = DbHelper.getSql2o().open()) {
+            final String query
+                    = "SELECT id, usr, pass , nombres , apellidos , estado , email , bloqueado "
+                    + "FROM usuario WHERE id = :id";
+
+            return con.createQuery(query)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Usuario.class);
+        }
     }
 
 }

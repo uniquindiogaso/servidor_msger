@@ -32,7 +32,7 @@ public class ManejadorComunicacion extends Thread {
         super.run();
         boolean activo = true;
         while (activo) {
-        	System.out.println(activo);
+            System.out.println(activo);
             if (miCliente.isClosed()) {
                 activo = false;
                 continue;
@@ -75,7 +75,7 @@ public class ManejadorComunicacion extends Thread {
     public boolean enviarMensaje(String mensaje) {
         if (!miCliente.isClosed()) {
             try {
-                salidaACliente.writeBytes( mensaje + "\n");
+                salidaACliente.writeBytes(mensaje + "\n");
                 return true;
             } catch (IOException e) {
                 // TODO Auto-generated catch block

@@ -30,7 +30,7 @@ public class UsuarioController {
                 return "301";
             }
             //Usuario Correcto ...
-            return "101";
+            return "101||"+usuarios.get(0).getId();
         }
         //error general
         return "200";
