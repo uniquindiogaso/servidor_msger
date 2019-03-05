@@ -50,7 +50,7 @@ public class UsuarioController {
         String res = "";
         List<Usuario> todos = pojo.todos(usuarioId);
         for (Usuario u : todos) {
-            res += String.format("%s||[%s] %s %s", u.getId(), u.getUsr(), u.getNombres(), u.getApellidos());
+            res += String.format("%s||[%s] %s %s\n", u.getId(), u.getUsr(), u.getNombres(), u.getApellidos());
         }
         return res;
     }
