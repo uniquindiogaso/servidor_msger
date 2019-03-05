@@ -38,8 +38,8 @@ public class ManejadorClientes implements Runnable {
         this.s = s;
         this.estaAutenticado = true;
         System.out.println("manejador clientes 2");
-        //listaUsuarios = new HiloListaUsuarios(ss);
-        //solicitudesAmistad = new HiloSolicitudesAmistad(ss);
+        listaUsuarios = new HiloListaUsuarios(ss);
+        solicitudesAmistad = new HiloSolicitudesAmistad(ss);
 
     }
 
@@ -98,8 +98,7 @@ public class ManejadorClientes implements Runnable {
                     
                     
                     for (ManejadorClientes mc : ServerChat.clientesHandle) {
-                        System.out.println("usuarioId = " + mc.clienteId  + " | destino " + destino);   
-                        
+                        System.out.println("usuarioId = " + mc.clienteId  + " | destino " + destino);  
                         //Si encuentra el cliente ... entonces conectar                        
                         if (mc.clienteId.equals(destino) && mc.estaAutenticado == true) {
                             //mc.salidaACliente.writeBytes(mensaje);                             
@@ -135,6 +134,16 @@ public class ManejadorClientes implements Runnable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(String clienteId) {
+        this.clienteId = clienteId;
+    }
+    
+    
 
     public HiloListaUsuarios getListaUsuarios() {
         return listaUsuarios;

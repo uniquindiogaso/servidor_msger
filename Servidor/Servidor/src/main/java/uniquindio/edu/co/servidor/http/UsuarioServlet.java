@@ -39,6 +39,11 @@ public class UsuarioServlet extends HttpServlet {
 
         if ("/usuariomodificar".equals(request.getRequestURI())) {
             res = controller.actualizarUsuario(usuario);
+            if (res.equals("-1")){
+                res = "203"; //no se pudo modificar
+            }else{
+                res = "103" ; //modificado correctamente
+            }
         }
 
         response.setContentType("text/html;charset=UTF-8");

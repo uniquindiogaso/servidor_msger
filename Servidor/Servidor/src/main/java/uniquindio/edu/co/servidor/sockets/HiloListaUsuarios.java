@@ -13,7 +13,7 @@ public class HiloListaUsuarios
     private ServerChat server = null;
 
     //Tiempo de retraso
-    public static final int DELAY = 100000;
+    public static final int DELAY = 5000;
 
     /**
      * *

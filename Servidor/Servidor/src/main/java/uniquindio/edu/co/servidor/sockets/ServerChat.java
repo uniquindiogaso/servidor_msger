@@ -3,12 +3,14 @@ package uniquindio.edu.co.servidor.sockets;
 // Java implementation of  ServerChat side 
 // It contains two classes : ServerChat and ManejadorClientes 
 // Save file as ServerChat.java 
-
 import java.io.*;
 import java.util.*;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uniquindio.edu.co.bd.models.Amistad;
+import uniquindio.edu.co.bd.models.Solicitud;
+import uniquindio.edu.co.controllers.SolicitudesController;
 
 // ServerChat class 
 /**
@@ -25,10 +27,14 @@ public class ServerChat {
     // counter for clients 
     static int i = 0;
 
+    SolicitudesController solicitudes;
+
     public ServerChat() throws IOException {
         // server is listening on port 1234 
         ServerSocket ss = new ServerSocket(1234);
-        
+
+        solicitudes = new SolicitudesController();
+
         System.out.println("SERVIDOR[2] UQ ESC 1234");
 
         Socket s;
@@ -50,11 +56,10 @@ public class ServerChat {
             ManejadorClientes clienteHandle = new ManejadorClientes(s, "c" + i, entradaDeCliente, salidaACliente, this);
 
             //inicia el hilo que envfia la lista una sola vez para cada usuario               
-            //clienteHandle.getListaUsuarios().start();
+            clienteHandle.getListaUsuarios().start();
 
             //Iniciar hilo de comprobacion de solicitudes de amistad
-            //clienteHandle.getSolicitudesAmistad().start();
-
+            clienteHandle.getSolicitudesAmistad().start();
             // crear hilo para cliente. 
             Thread clienteHilo = new Thread(clienteHandle);
 
@@ -80,21 +85,27 @@ public class ServerChat {
         }
     }
 
-    public String listaUsuarios(String usuario) {
+    public String listaUsuarios(List<Amistad> amigos) {
         String usuarios = "";
         //TODO ... enviar unicamente usuarios que sean amigos
-        for (ManejadorClientes c : clientesHandle) {
-            usuarios += c.getName() + "&&";
+        for (Amistad amigo : amigos) {
+            usuarios += amigo.getAmigo().getId() + "&&";
         }
         return usuarios;
     }
 
     public void enviarUsuariosConectados() {
-        enviarMensajeTodos(Acciones._LISTAUSUARIOS);
+        synchronized (clientesHandle) {
+            enviarMensajeTodos(Acciones._LISTAUSUARIOS);
+        }
+
     }
 
     public void enviarSolicitudesAmistad() {
-        enviarMensajeTodos(Acciones._SOLICITUDES);
+        synchronized (clientesHandle) {
+            enviarMensajeTodos(Acciones._SOLICITUDES);
+        }
+
     }
 
     public void enviarMensajeTodos(String tipo) {
@@ -103,14 +114,28 @@ public class ServerChat {
             String msj = "";
 
             if (Acciones._LISTAUSUARIOS.equals(tipo)) {
-                msj = tipo + "||" + "tokenOK" + "||" + "server" + "||" + c.getName() + "||" + listaUsuarios(c.getName());
+                System.out.println("_LISTAUSUARIOS " + c.getClienteId());
+                if (c.getClienteId() != null) {
+                    System.out.println("Buscando Amigos para " + c.getClienteId());
+                    /*
+                    List<Amistad> amigos = solicitudes.amigosUsuario(Integer.valueOf(c.getClienteId()));
+                    if (!amigos.isEmpty()){                        
+                        msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||" + listaUsuarios(amigos);
+                    } 
+                     */
+                }
+
             }
             if (Acciones._SOLICITUDES.equals(tipo)) {
                 //TODO : Cambiar listaUsuarios por Lista de Solicitudes
-                msj = tipo + "||" + "tokenOK" + "||" + "server" + "||" + c.getName() + "||" + listaUsuarios(c.getName());
+                msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||";//+ listaUsuarios(c.getName());
             }
 
-            c.enviarMensaje(msj);
+            //solo enviar mensaj cuando tenga algo que enviar
+            if (!msj.isEmpty()) {
+                c.enviarMensaje(msj);
+            }
+
         }
     }
 

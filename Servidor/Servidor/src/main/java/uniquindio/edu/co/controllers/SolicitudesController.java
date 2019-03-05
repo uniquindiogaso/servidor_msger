@@ -80,4 +80,8 @@ public class SolicitudesController {
         return res;
     }
 
+    
+    public List<Amistad> amigosUsuario(int usuarioId){
+        return pojoAmistad.amigos(usuarioId);
+    }
 }
