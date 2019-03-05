@@ -93,8 +93,7 @@ public class ServerChat {
         }
         return usuarios;
     }
-    
-    
+
     public String listaSolicitudes(List<Solicitud> solicitud) {
         String usuarios = "";
         //TODO ... enviar unicamente usuarios que sean amigos
@@ -102,7 +101,7 @@ public class ServerChat {
             usuarios += s.getUsuariosolicitaId() + "&&";
         }
         return usuarios;
-    }            
+    }
 
     public void enviarUsuariosConectados() {
         synchronized (clientesHandle) {
@@ -134,15 +133,15 @@ public class ServerChat {
 
             }
             if (Acciones._SOLICITUDES.equals(tipo)) {
-                if (c.getClienteId() != null){
+                if (c.getClienteId() != null) {
                     List<Solicitud> ss = solicitudes.obtenerSolicitudes(Integer.valueOf(c.getClienteId()));
                     //System.out.println("solicitudes amistad " + ss);
-                    if (!ss.isEmpty()){
-                        msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||"+ listaSolicitudes(ss);
+                    if (!ss.isEmpty()) {
+                        msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||" + listaSolicitudes(ss);
                     }
-                    
+
                 }
-                
+
             }
 
             //solo enviar mensaj cuando tenga algo que enviar
@@ -151,6 +150,13 @@ public class ServerChat {
             }
 
         }
+    }
+
+    public static void cerrarSesion(int usuarioSocket) {
+        synchronized (clientesHandle) {
+            clientesHandle.removeElementAt(i);
+        }
+
     }
 
 }

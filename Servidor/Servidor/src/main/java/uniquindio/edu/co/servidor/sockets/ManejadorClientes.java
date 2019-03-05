@@ -1,6 +1,5 @@
 package uniquindio.edu.co.servidor.sockets;
 
-
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -29,6 +28,8 @@ public class ManejadorClientes implements Runnable {
     private HiloListaUsuarios listaUsuarios;
     private HiloSolicitudesAmistad solicitudesAmistad;
 
+    
+    private ServerChat serverChat;
     // constructor 
     public ManejadorClientes(Socket s, String name,
             BufferedReader dis, DataOutputStream dos, ServerChat ss) {
@@ -40,12 +41,15 @@ public class ManejadorClientes implements Runnable {
         System.out.println("manejador clientes 2");
         listaUsuarios = new HiloListaUsuarios(ss);
         solicitudesAmistad = new HiloSolicitudesAmistad(ss);
+       
+        
+        this.serverChat = ss;
 
     }
 
     public void enviarMensaje(String msj) {
         try {
-            salidaACliente.writeBytes(msj+"\n");            
+            salidaACliente.writeBytes(msj + "\n");
         } catch (IOException ex) {
             Logger.getLogger(ManejadorClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,7 +57,7 @@ public class ManejadorClientes implements Runnable {
 
     @Override
     public void run() {
-        
+
         String mensaje;
         while (true) {
             try {
@@ -62,14 +66,6 @@ public class ManejadorClientes implements Runnable {
                 System.out.println("mensaje***** = |" + mensaje + "|");
                 if (!mensaje.isEmpty()) {
 
-                    
-                    //TODO: Orgizar para quitar de las listas de usuarios
-                    if (mensaje.equals("logout")) {
-                        this.estaAutenticado = false;
-                        this.s.close();
-                        break;
-                    }
-
                     // DATA ACTUAL "#MSJ||FQLSHP||c0||c2||Hola :)"
                     StringTokenizer st = new StringTokenizer(mensaje, Constantes._SEPARADOR);
                     String accion = st.nextToken();
@@ -77,28 +73,49 @@ public class ManejadorClientes implements Runnable {
                     String origen = st.nextToken();
                     String destino = st.nextToken();
 
-                                       
-                    
+                    //TODO: Orgizar para quitar de las listas de usuarios
+                    if (accion.equals("#DESCONECTAR") && destino.equals("s3rv1d0r")) {
+                        for (ManejadorClientes mc : ServerChat.clientesHandle) {
+
+                        }
+
+                        int idClienteVector = -1;
+                        for (int i = 0; i < ServerChat.clientesHandle.size(); i++) {
+                            if (ServerChat.clientesHandle.get(i).clienteId.equals(origen)) {
+                                idClienteVector = i;
+                                break;
+                            }
+                        }
+
+                        if (idClienteVector != -1) {
+                            this.estaAutenticado = false;
+                            this.s.close();
+                            break;
+                            
+                            //serverChat.cerrarSesion(idClienteVector);
+                            
+                        }
+
+                    }
+
                     //TODO:
                     //1. Comprobar si token es valido para origen
                     //2. Noticiar a origen si no esta autorizado
                     //3. si no es valido: return;
-                    
-                     if (accion.equals("#HOLA") && destino.equals("s3rv1d0r")){
-                                //id = origen
-                                String saludador = "c"+(ServerChat.clientesHandle.size()-1);
-                                 for (ManejadorClientes mc : ServerChat.clientesHandle) {
-                                     if (mc.name.equals(saludador)){
-                                         mc.clienteId = origen;
-                                         break;
-                                     }
-                                 }
-                                
+                    if (accion.equals("#HOLA") && destino.equals("s3rv1d0r")) {
+                        //id = origen
+                        String saludador = "c" + (ServerChat.clientesHandle.size() - 1);
+                        for (ManejadorClientes mc : ServerChat.clientesHandle) {
+                            if (mc.name.equals(saludador)) {
+                                mc.clienteId = origen;
+                                break;
+                            }
                         }
-                    
-                    
+
+                    }
+
                     for (ManejadorClientes mc : ServerChat.clientesHandle) {
-                        System.out.println("usuarioId = " + mc.clienteId  + " | destino " + destino);  
+                        System.out.println("usuarioId = " + mc.clienteId + " | destino " + destino);
                         //Si encuentra el cliente ... entonces conectar                        
                         if (mc.clienteId.equals(destino) && mc.estaAutenticado == true) {
                             //mc.salidaACliente.writeBytes(mensaje);                             
@@ -142,8 +159,6 @@ public class ManejadorClientes implements Runnable {
     public void setClienteId(String clienteId) {
         this.clienteId = clienteId;
     }
-    
-    
 
     public HiloListaUsuarios getListaUsuarios() {
         return listaUsuarios;
