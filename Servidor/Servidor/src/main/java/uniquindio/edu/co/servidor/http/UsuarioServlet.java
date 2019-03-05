@@ -53,8 +53,10 @@ public class UsuarioServlet extends HttpServlet {
         
         
         if ("/obtenerusuarios".equals(request.getRequestURI())) {
+            System.out.println("obteniendo todos los usuarios ....");
             String usuarioId = request.getParameter("usuario_id");
             res = controller.obtenerUsuarios(usuarioId);
+            System.out.println("res:\n"+res);
         }
         
         
