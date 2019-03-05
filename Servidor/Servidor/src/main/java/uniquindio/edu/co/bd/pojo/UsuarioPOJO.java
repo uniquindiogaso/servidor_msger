@@ -37,7 +37,7 @@ public class UsuarioPOJO {
                         "ON u.id = a.amigo_id AND a.id <> = :usuarioId";
 
             return con.createQuery(query)
-                    .addParameter("id", usuarioId)                    
+                    .addParameter("usuarioId", usuarioId)                    
                     .executeAndFetch(Usuario.class);
         }
     }
