@@ -20,11 +20,11 @@ public class AmistadPOJO {
     public List<Amistad> amigos(int usuarioId) {
         try (Connection con = DbHelper.getSql2o().open()) {
             final String query
-                    = "SELECT amigo_id"
+                    = "SELECT amigo_id "
                     + "FROM amigos WHERE usuario_id = :usuario_id";
 
             return con.createQuery(query)
-                    .addParameter("usuarioId", usuarioId)
+                    .addParameter("usuario_id", usuarioId)
                     .executeAndFetch(Amistad.class);
         }
     }

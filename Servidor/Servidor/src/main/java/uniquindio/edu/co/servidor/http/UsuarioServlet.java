@@ -35,14 +35,19 @@ public class UsuarioServlet extends HttpServlet {
 
         if ("/usuariocrear".equals(request.getRequestURI())) {
             res = controller.insertarUsuario(usuario);
+            if (res.equals("-1")) {
+                res = "202"; // no se pudo crear
+            } else {
+                res = "102"; //creado correctamente                
+            }
         }
 
         if ("/usuariomodificar".equals(request.getRequestURI())) {
             res = controller.actualizarUsuario(usuario);
-            if (res.equals("-1")){
+            if (res.equals("-1")) {
                 res = "203"; //no se pudo modificar
-            }else{
-                res = "103" ; //modificado correctamente
+            } else {
+                res = "103"; //modificado correctamente
             }
         }
 
