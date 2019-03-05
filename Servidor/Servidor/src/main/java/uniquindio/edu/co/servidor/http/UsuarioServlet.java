@@ -50,6 +50,14 @@ public class UsuarioServlet extends HttpServlet {
                 res = "103"; //modificado correctamente
             }
         }
+        
+        
+        if ("/obtenerusuarios".equals(request.getRequestURI())) {
+            String usuarioId = request.getParameter("usuario_id");
+            res = controller.obtenerUsuarios(usuarioId);
+        }
+        
+        
 
         response.setContentType("text/html;charset=UTF-8");
         response.setStatus(HttpServletResponse.SC_OK);

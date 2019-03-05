@@ -30,20 +30,29 @@ public class UsuarioController {
                 return "301";
             }
             //Usuario Correcto ...
-            return "101||"+usuarios.get(0).getId();
+            return "101||" + usuarios.get(0).getId();
         }
         //error general
         return "200";
     }
-    
-    public String insertarUsuario(Usuario usuario){
+
+    public String insertarUsuario(Usuario usuario) {
         int res = pojo.insertarUsuario(usuario);
         return String.valueOf(res);
     }
-    
-    public String actualizarUsuario(Usuario usuario){
+
+    public String actualizarUsuario(Usuario usuario) {
         int res = pojo.actualizarUsuario(usuario);
         return String.valueOf(res);
-    }    
+    }
+
+    public String obtenerUsuarios(String usuarioId) {
+        String res = "";
+        List<Usuario> todos = pojo.todos(usuarioId);
+        for (Usuario u : todos) {
+            res += String.format("%s||[%s] %s %s", u.getId(), u.getUsr(), u.getNombres(), u.getApellidos());
+        }
+        return res;
+    }
 
 }
