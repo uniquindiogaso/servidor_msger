@@ -21,6 +21,7 @@ public class SolicitudesController {
     public SolicitudesController() {
         pojo = new SolicitudesPOJO();
         pojoAmistad = new AmistadPOJO();
+        pojoUsuario = new UsuarioPOJO();
 
     }
 

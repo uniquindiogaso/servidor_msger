@@ -136,6 +136,7 @@ public class ServerChat {
             if (Acciones._SOLICITUDES.equals(tipo)) {
                 if (c.getClienteId() != null){
                     List<Solicitud> ss = solicitudes.obtenerSolicitudes(Integer.valueOf(c.getClienteId()));
+                    //System.out.println("solicitudes amistad " + ss);
                     if (!ss.isEmpty()){
                         msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||"+ listaSolicitudes(ss);
                     }

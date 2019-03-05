@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import uniquindio.edu.co.bd.models.Usuario;
 import uniquindio.edu.co.controllers.UsuarioController;
+import uniquindio.edu.co.servidor.sockets.Acciones;
 
 public class UsuarioServlet extends HttpServlet {
 
@@ -56,6 +57,9 @@ public class UsuarioServlet extends HttpServlet {
             System.out.println("obteniendo todos los usuarios ....");
             String usuarioId = request.getParameter("usuario_id");
             res = controller.obtenerUsuarios(usuarioId);
+            if(!res.isEmpty()){
+                res = Acciones._LISTAUSUARIOS + "\n" + res;
+            }
             System.out.println("res:\n"+res);
         }
         

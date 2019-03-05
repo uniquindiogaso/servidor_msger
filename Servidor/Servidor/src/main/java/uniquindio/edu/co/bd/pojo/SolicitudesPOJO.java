@@ -51,14 +51,20 @@ public class SolicitudesPOJO {
     public int actualizar(Solicitud s) {
         int res = -1;
 
+        System.out.println("SQL actualizar estado " + s.getEstado());
+        System.out.println("SQL actualizar id " + s.getId());
+        
         final String updateQuery
-                = "UPDATE solicitudes SET :estado WHERE id = :id";
+                = "UPDATE solicitudes SET estado = :estado WHERE id = :id";
 
         try (Connection con = DbHelper.getSql2o().open()) {
-            res = con.createQuery(updateQuery, true)
-                    .bind(s)
+          res = con.createQuery(updateQuery, false)
+                    .addParameter("estado", s.getEstado())
+                    .addParameter("id", s.getId())
+                    //.bind(s)
                     .executeUpdate()
                     .getResult();
+          
         }
 
         return res;
@@ -68,8 +74,8 @@ public class SolicitudesPOJO {
     public Solicitud obtenerSolicitud(int id) {        
         try (Connection con = DbHelper.getSql2o().open()) {
             final String query
-                    = "SELECT id,  usuariosolicita_id , usuariosolicitado_id , estado"
-                    + "FROM solicitudes WHERE id = :id";
+                    = "SELECT id,  usuariosolicita_id , usuariosolicitado_id , estado "
+                    + "FROM solicitudes WHERE id = :id LIMIT 1";
 
             return con.createQuery(query)
                     .addParameter("id", id)

@@ -12,8 +12,8 @@ package uniquindio.edu.co.bd.models;
 public class Solicitud {
 
     private int id;
-    private int usuariosolicitaId;
-    private int usuariosolicitadoId;
+    private int usuariosolicita_Id;
+    private int usuariosolicitado_Id;
     private int estado;
 
     public Solicitud() {
@@ -30,14 +30,14 @@ public class Solicitud {
 
     public Solicitud(int id, int usuariosolicitaId, int usuariosolicitadoId, int estado) {
         this.id = id;
-        this.usuariosolicitaId = usuariosolicitaId;
-        this.usuariosolicitadoId = usuariosolicitadoId;
+        this.usuariosolicita_Id = usuariosolicitaId;
+        this.usuariosolicitado_Id = usuariosolicitadoId;
         this.estado = estado;
     }
 
     public Solicitud(int usuariosolicitaId, int usuariosolicitadoId, int estado) {
-        this.usuariosolicitaId = usuariosolicitaId;
-        this.usuariosolicitadoId = usuariosolicitadoId;
+        this.usuariosolicita_Id = usuariosolicitaId;
+        this.usuariosolicitado_Id = usuariosolicitadoId;
         this.estado = estado;
     }
 
@@ -50,19 +50,19 @@ public class Solicitud {
     }
 
     public int getUsuariosolicitaId() {
-        return usuariosolicitaId;
+        return usuariosolicita_Id;
     }
 
     public void setUsuariosolicitaId(int usuariosolicitaId) {
-        this.usuariosolicitaId = usuariosolicitaId;
+        this.usuariosolicita_Id = usuariosolicitaId;
     }
 
     public int getUsuariosolicitadoId() {
-        return usuariosolicitadoId;
+        return usuariosolicitado_Id;
     }
 
     public void setUsuariosolicitadoId(int usuariosolicitadoId) {
-        this.usuariosolicitadoId = usuariosolicitadoId;
+        this.usuariosolicitado_Id = usuariosolicitadoId;
     }
 
     public int getEstado() {

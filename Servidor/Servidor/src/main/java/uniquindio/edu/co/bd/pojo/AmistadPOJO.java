@@ -33,7 +33,7 @@ public class AmistadPOJO {
         int res = -1;
         final String insertQuery
                 = "INSERT INTO amigos (usuario_id, amigo_id) "
-                + "VALUES (:amigo_id, :amigo_id)";
+                + "VALUES (:usuario_id, :amigo_id)";
 
         try (Connection con = DbHelper.getSql2o().beginTransaction()) {
             res = con.createQuery(insertQuery, true)

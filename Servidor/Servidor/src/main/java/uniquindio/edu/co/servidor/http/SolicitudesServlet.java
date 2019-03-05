@@ -25,10 +25,14 @@ public class SolicitudesServlet extends HttpServlet {
         SolicitudesController controller = new SolicitudesController();
 
         if ("/enviarsolicitud".equals(request.getRequestURI())) {
+            
+            System.out.println("de " + request.getParameter("de"));
+            System.out.println("para " + request.getParameter("para"));
             res = controller.insertarSolicitud(request.getParameter("de"), request.getParameter("para"));
         }
 
         if ("/aceptarsolicitud".equals(request.getRequestURI())) {
+            System.out.println("[/aceptarsolicitud] " + request.getParameter("id"));
             res = controller.actualizarSolicitud(request.getParameter("id"), 2, "602");
         }
 
