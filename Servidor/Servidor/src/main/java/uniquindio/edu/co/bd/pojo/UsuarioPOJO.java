@@ -34,7 +34,7 @@ public class UsuarioPOJO {
         try (Connection con = DbHelper.getSql2o().open()) {
             final String query
                     = "SELECT u.id, u.usr, u.nombres , u.apellidos , u.estado , u.email FROM usuario u  LEFT JOIN amigos a \n" +
-                        "ON u.id = a.amigo_id AND a.id <> = :usuarioId";
+                        "ON u.id = a.amigo_id AND a.id <> :usuarioId";
 
             return con.createQuery(query)
                     .addParameter("usuarioId", usuarioId)                    
