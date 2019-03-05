@@ -36,6 +36,9 @@ public class JettyServer {
         servletHandler.addServletWithMapping(LoginServlet.class, "/status");
         servletHandler.addServletWithMapping(UsuarioServlet.class, "/usuariocrear");
         servletHandler.addServletWithMapping(UsuarioServlet.class, "/usuariomodificar");
+        servletHandler.addServletWithMapping(SolicitudesServlet.class, "/enviarsolicitud");
+        servletHandler.addServletWithMapping(SolicitudesServlet.class, "/aceptarsolicitud");
+        servletHandler.addServletWithMapping(SolicitudesServlet.class, "/rechazarsolicitud");
 
         server.start();
 

@@ -20,7 +20,7 @@ public class SolicitudesPOJO {
     public List<Solicitud> solicitudes(int usuarioSolicitadoId) {
         try (Connection con = DbHelper.getSql2o().open()) {
             final String query
-                    = "SELECT id, usuariosolicita_id"
+                    = "SELECT id, usuariosolicita_id "
                     + "FROM solicitudes WHERE usuariosolicitado_id = :usuariosolicitado_id AND estado = 1";
 
             return con.createQuery(query)

@@ -87,14 +87,22 @@ public class ServerChat {
 
     public String listaUsuarios(List<Amistad> amigos) {
         String usuarios = "";
+        //TODO ... enviar unicamente usuarios que sean amigos
+        for (Amistad amigo : amigos) {
+            usuarios += amigo.getAmigo_Id() + "&&";
+        }
         return usuarios;
-//        //TODO ... enviar unicamente usuarios que sean amigos
-//        for (Amistad amigo : amigos) {
-//            System.out.println("amigo " + amigo);
-//            usuarios += "";//amigo.getAmigo().getId() + "&&";
-//        }
-//        return usuarios;
     }
+    
+    
+    public String listaSolicitudes(List<Solicitud> solicitud) {
+        String usuarios = "";
+        //TODO ... enviar unicamente usuarios que sean amigos
+        for (Solicitud s : solicitud) {
+            usuarios += s.getUsuariosolicitaId() + "&&";
+        }
+        return usuarios;
+    }            
 
     public void enviarUsuariosConectados() {
         synchronized (clientesHandle) {
@@ -116,21 +124,24 @@ public class ServerChat {
             String msj = "";
 
             if (Acciones._LISTAUSUARIOS.equals(tipo)) {
-                System.out.println("_LISTAUSUARIOS " + c.getClienteId());
                 if (c.getClienteId() != null) {
-                    System.out.println("Buscando Amigos para " + c.getClienteId());
-                    
                     List<Amistad> amigos = solicitudes.amigosUsuario(Integer.valueOf(c.getClienteId()));
-                    if (!amigos.isEmpty()){                        
+                    if (!amigos.isEmpty()) {
                         msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||" + listaUsuarios(amigos);
-                    } 
-                    
+                    }
+
                 }
 
             }
             if (Acciones._SOLICITUDES.equals(tipo)) {
-                //TODO : Cambiar listaUsuarios por Lista de Solicitudes
-                msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||";//+ listaUsuarios(c.getName());
+                if (c.getClienteId() != null){
+                    List<Solicitud> ss = solicitudes.obtenerSolicitudes(Integer.valueOf(c.getClienteId()));
+                    if (!ss.isEmpty()){
+                        msj = tipo + "||" + "tokenOK" + "||" + "s3rv1d0r" + "||" + c.getName() + "||"+ listaSolicitudes(ss);
+                    }
+                    
+                }
+                
             }
 
             //solo enviar mensaj cuando tenga algo que enviar
